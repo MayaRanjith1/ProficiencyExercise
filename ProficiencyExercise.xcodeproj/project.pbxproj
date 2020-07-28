@@ -15,6 +15,7 @@
 		215A470424D0972100B82351 /* ProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A470324D0972100B82351 /* ProficiencyExerciseTests.swift */; };
 		215A470F24D0972100B82351 /* ProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A470E24D0972100B82351 /* ProficiencyExerciseUITests.swift */; };
 		215A471E24D097D000B82351 /* PEFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A471D24D097D000B82351 /* PEFactsViewController.swift */; };
+		215A472124D098F100B82351 /* PEViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A472024D098F100B82351 /* PEViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		215A470E24D0972100B82351 /* ProficiencyExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyExerciseUITests.swift; sourceTree = "<group>"; };
 		215A471024D0972100B82351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		215A471D24D097D000B82351 /* PEFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEFactsViewController.swift; sourceTree = "<group>"; };
+		215A472024D098F100B82351 /* PEViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		215A46EB24D0971E00B82351 /* ProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
+				215A471F24D098D100B82351 /* ViewModel */,
 				215A471C24D0978100B82351 /* View */,
 				215A46EC24D0971E00B82351 /* AppDelegate.swift */,
 				215A46EE24D0971E00B82351 /* SceneDelegate.swift */,
@@ -134,6 +137,14 @@
 				215A471D24D097D000B82351 /* PEFactsViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		215A471F24D098D100B82351 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				215A472024D098F100B82351 /* PEViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				215A471E24D097D000B82351 /* PEFactsViewController.swift in Sources */,
+				215A472124D098F100B82351 /* PEViewModel.swift in Sources */,
 				215A46ED24D0971E00B82351 /* AppDelegate.swift in Sources */,
 				215A46EF24D0971E00B82351 /* SceneDelegate.swift in Sources */,
 			);
