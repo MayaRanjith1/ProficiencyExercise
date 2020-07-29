@@ -14,7 +14,7 @@ class PEFactsViewController: UITableViewController {
     var factsArray: [FactRows] = []
 
 
-    lazy var viewModel: PEViewModel = {
+     var viewModel: PEViewModel = {
         let viewmod = PEViewModel()
         return viewmod
     }()

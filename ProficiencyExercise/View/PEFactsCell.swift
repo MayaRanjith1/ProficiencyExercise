@@ -18,6 +18,8 @@ class PEFactsCell: UITableViewCell {
     let factTitleLabel: UILabel = {
         let factTitleLabel = UILabel()
         factTitleLabel.backgroundColor = .white
+        factTitleLabel.textColor = .black
+
         factTitleLabel.numberOfLines = 0
         factTitleLabel.textAlignment = NSTextAlignment.center
         factTitleLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
@@ -28,7 +30,10 @@ class PEFactsCell: UITableViewCell {
     let factDescLabel: UILabel = {
         let factDescLabel = UILabel()
         factDescLabel.backgroundColor = .white
+        factDescLabel.textColor = .black
         factDescLabel.numberOfLines = 0
+        factDescLabel.textAlignment = NSTextAlignment.center
+
         factDescLabel.translatesAutoresizingMaskIntoConstraints = false
         return factDescLabel
     }()

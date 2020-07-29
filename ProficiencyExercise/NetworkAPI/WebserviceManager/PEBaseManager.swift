@@ -46,10 +46,12 @@ enum ConnectionType: String{
     case wwan
 }
 
-class  BaseManager: NSObject {
+class BaseManager {
     
     // MARK:- Properties
-    
+    static let shared = BaseManager()
+    var session: URLSession
+
     static var stringResponse: String?
     static var bodyData: String?
     static var networkRespose: NetworkResponse?
@@ -59,6 +61,12 @@ class  BaseManager: NSObject {
     static var appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     
     //MARK:- ConnectionType
+    
+    init() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 30.0
+        session = URLSession(configuration:configuration)
+    }
     
     class func connectionType() -> ConnectionType{
         var type: ConnectionType  = .none
@@ -115,6 +123,18 @@ class  BaseManager: NSObject {
         }
         return (statusCodes: response.statusCode,message:message)
         
+    }
+    
+    static func setMockSession(){
+        let session: URLSession = {
+            let config: URLSessionConfiguration  = {
+                let configration = URLSessionConfiguration.default
+                configration.protocolClasses = [MockURLProtocol.self]
+                return configration
+            }()
+            return URLSession(configuration:config)
+        }()
+        shared.session = session
     }
 
 }
