@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PEFactsViewController: UIViewController {
+class PEFactsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
