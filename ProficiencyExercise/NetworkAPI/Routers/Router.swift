@@ -12,15 +12,13 @@ import Alamofire
 typealias Json = [String : Any]
 
 protocol Router: URLRequestConvertible {
-    var method: HTTPMethod {get}
     static var baseUrl: String {get}
+    var method: HTTPMethod {get}
     var timeOut: TimeInterval  {get}
-    var path: String {get}
     var queryItems: [URLQueryItem]? {get}
     var headers : HTTPHeaders? {get}
     var bodyParams: Any? {get}
-    var params: Json {get}
-    
+    var params: Parameters? {get}
 }
 
 extension Router{
@@ -33,14 +31,16 @@ extension Router{
     }
 
     static var baseUrl: String{
-        return UrlValue.baseUrl
+        return URLValue.baseUrl
+    }
+    
+    var params: Parameters?{
+        return nil
     }
 
     
-    
     func asURLRequest() throws -> URLRequest {
         var url = try type(of: self).baseUrl.asURL()
-        url.appendPathComponent(path)
         
         if let queryString = self.queryItems{
             var components = URLComponents(url: url, resolvingAgainstBaseURL: true)

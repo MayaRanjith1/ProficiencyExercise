@@ -11,7 +11,7 @@ import Foundation
 class PEFactmanger: BaseManager {
     
     class func getFactDetails(completion: @escaping (_ response : Data?, _ error : Error?) ->()){
-        let endpoint = PERouter.getFactsData
+        let endpoint = PERouter.baseUrl
         BaseManager.requestForServiceWith(endPoint: endpoint) {
             (responseData,responseError) in
             completion(responseData,responseError)

@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-typealias NetworkResponse = (statusCode: Int,message: String)
+typealias NetworkResponse = (statusCodes: Int,message: String)
 
 enum NetworkResponseMessage: String{
     case success
@@ -72,32 +72,35 @@ class  BaseManager: NSObject {
         return type
     }
 
-    class func requestForServiceWith(endPoint: URLRequestConvertible, completion: @escaping(_ response: Data?, _ error:Error?) -> ()){
+    class func requestForServiceWith(endPoint: String, completion: @escaping(_ response: Data?, _ error:Error?) -> ()){
         
-        PEWebserviceHandler.request(url: endPoint){(optionalResponse) in
+        PEWebserviceHandler.requestData(urlString: endPoint){(data,optionalResponse,error) in
             
             guard let response = optionalResponse else{
                 completion(nil,nil)
                 return
             }
-            
-            switch response.result{
-            case.success:
-                completion(response.data,nil)
-                
-                
-            case .failure(let error):
-                self.networkRespose = BaseManager.handleNetworkResponse(response.response)
-                print("Request failed with error:\(error.localizedDescription)")
-                completion(response.data,response.error)
+//            print(response)
+            self.networkRespose = BaseManager.handleNetworkResponse(response )
+            completion(data,nil)
 
-            }
+//            switch response{
+//            case.success:
+//                completion(response.data,nil)
+//
+//
+//            case .failure(let error):
+//                self.networkRespose = BaseManager.handleNetworkResponse(response.response)
+//                print("Request failed with error:\(error.localizedDescription)")
+//                completion(response.data,response.e)
+//
+//            }
             
         }
     }
     
     
-    fileprivate class func handleNetworkResponse(_ response: HTTPURLResponse?) -> NetworkResponse? {
+    fileprivate class func handleNetworkResponse(_ response: HTTPURLResponse?) -> NetworkResponse?{
         
         guard let response = response else {
             return nil
@@ -112,7 +115,7 @@ class  BaseManager: NSObject {
             message = NetworkResponseMessage.failed.description
 
         }
-        return (statusCode: response.statusCode, message:message)
+        return (statusCodes: response.statusCode,message:message)
         
     }
 

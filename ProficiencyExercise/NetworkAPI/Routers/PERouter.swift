@@ -9,13 +9,7 @@
 import Foundation
 import  Alamofire
 
-enum PERouter:  Router {
-    
-    
-    
-    
-    
-    
+enum PERouter: Router {
     
     case getFactsData
     
@@ -25,15 +19,7 @@ enum PERouter:  Router {
           return  .get
         }
     }
-    var path: String{
-        switch self {
-        case .getFactsData:
-            return "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-            
-        
-        }
-        
-    }
+   
     var headers: HTTPHeaders?{
         return ["Content-Type":"application/json"]
     }
@@ -41,5 +27,6 @@ enum PERouter:  Router {
     var bodyParams: Any?{
         return nil
     }
+  
 
 }
