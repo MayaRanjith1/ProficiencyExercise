@@ -14,6 +14,8 @@ class PEFactsViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tableView.register(PEFactsCell.self, forCellReuseIdentifier: PEConstants.CellIdentifiers.factCell)
+
     }
     
 

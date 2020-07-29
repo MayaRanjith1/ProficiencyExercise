@@ -8,6 +8,6 @@
 
 import UIKit
 
-class PEConstants: NSObject {
-
+struct CellIdentifiers {
+    static let factCell = "PEFactsCell"
 }
