@@ -65,8 +65,6 @@ class  BaseManager: NSObject {
         if let reachability = NetworkReachabilityManager(){
             if reachability.isReachableOnEthernetOrWiFi{
                 type = .wifi
-            }else if reachability.isReachableOnWWAN{
-                type = .wwan
             }
         }
         return type
@@ -84,17 +82,17 @@ class  BaseManager: NSObject {
             self.networkRespose = BaseManager.handleNetworkResponse(response )
             completion(data,nil)
 
-//            switch response{
-//            case.success:
-//                completion(response.data,nil)
-//
-//
-//            case .failure(let error):
-//                self.networkRespose = BaseManager.handleNetworkResponse(response.response)
-//                print("Request failed with error:\(error.localizedDescription)")
-//                completion(response.data,response.e)
-//
-//            }
+            switch response.statusCode{
+            case  200...299:
+                completion(data,nil)
+
+
+            default:
+                self.networkRespose = BaseManager.handleNetworkResponse(response)
+                print("Request failed with error:\(error?.localizedDescription ?? "")")
+                completion(nil,error)
+
+            }
             
         }
     }

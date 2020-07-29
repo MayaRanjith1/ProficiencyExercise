@@ -16,14 +16,7 @@ class PEWebserviceHandler: NSObject {
     // MARK:- Properties
     static var currntTask: DataRequest?
     
-    // MARK:- Request
-//    class  func request(url: URLRequestConvertible,loading: Bool = false, completion: @escaping (AlamoFireResponse?) ->() ){
-//
-//        currntTask = Alamofire.request(url).validate().responseJSON {  (response) in
-//            print("response \(response)")
-//            completion(response)
-//        }
-//    }
+  
 
     
     class  func requestData(urlString: String, completion: @escaping (_ data: Data?,_ response:HTTPURLResponse?, _ error: Error?) -> Void) {

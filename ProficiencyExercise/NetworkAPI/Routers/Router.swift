@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-
 typealias Json = [String : Any]
 
 protocol Router: URLRequestConvertible {

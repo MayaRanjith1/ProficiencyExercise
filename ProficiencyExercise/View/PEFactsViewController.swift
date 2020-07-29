@@ -37,10 +37,7 @@ class PEFactsViewController: UITableViewController {
             if isSuccess{
                 self.factsArray = self.viewModel.factDetails!
                 DispatchQueue.main.async {
-                    if self.refreshControl?.isRefreshing ?? false{
-                        self.refreshControl?.endRefreshing()
 
-                    }
                     if self.factsArray.count>0{
                         self.tableView.reloadData()
                     }
@@ -59,6 +56,7 @@ class PEFactsViewController: UITableViewController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl){
         getFactsData()
+        refreshControl.endRefreshing()
     }
     
     //MARK:- UITableview Datasource Methods

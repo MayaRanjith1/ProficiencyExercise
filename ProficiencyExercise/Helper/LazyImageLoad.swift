@@ -27,7 +27,6 @@ class LazyImageLoad {
     }
     
     class func getURLFromString(url: String?) -> URL? {
-        print("url\(url ?? "") ")
         let removePercentEncodingURL = url?.removingPercentEncoding
         let urlWithEscapingString = removePercentEncodingURL?.addingPercentEncoding(withAllowedCharacters:
             NSCharacterSet.urlQueryAllowed)

@@ -36,7 +36,7 @@ class PEFactsCell: UITableViewCell {
     let factImageView: UIImageView = {
         let factImageView = UIImageView()
         factImageView.translatesAutoresizingMaskIntoConstraints = false
-        factImageView.image = UIImage(named: "no-image-icon-23494")
+        factImageView.image = UIImage(named: "no-image-icon")
         return factImageView
     }()
     
