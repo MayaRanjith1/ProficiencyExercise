@@ -2,8 +2,7 @@
 //  ProficiencyExerciseTests.swift
 //  ProficiencyExerciseTests
 //
-//  Created by Ranjith Karuvadiyil on 28/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith  on 28/07/20.
 //
 
 import XCTest

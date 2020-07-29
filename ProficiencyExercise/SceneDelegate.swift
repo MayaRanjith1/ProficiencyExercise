@@ -2,8 +2,7 @@
 //  SceneDelegate.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 28/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith Karuvadiyil on 28/07/20.
 //
 
 import UIKit

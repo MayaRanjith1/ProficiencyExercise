@@ -2,8 +2,7 @@
 //  Router.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 29/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith on 29/07/20.
 //
 
 import Foundation
@@ -28,7 +27,7 @@ extension Router{
     var queryItems: [URLQueryItem]?{
         return nil
     }
-
+    
     static var baseUrl: String{
         return URLValue.baseUrl
     }
@@ -36,7 +35,7 @@ extension Router{
     var params: Parameters?{
         return nil
     }
-
+    
     
     func asURLRequest() throws -> URLRequest {
         var url = try type(of: self).baseUrl.asURL()
@@ -56,8 +55,8 @@ extension Router{
         if let httpHeaders = headers{
             for header in httpHeaders{
                 urlRequest.setValue(header.value, forHTTPHeaderField: header.key)
+            }
         }
-    }
         if let paramaters = bodyParams{
             if let data = paramaters as? Data {
                 urlRequest.httpBody = data

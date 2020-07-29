@@ -2,19 +2,18 @@
 //  PEFactsViewController.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 28/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith  on 28/07/20.
 //
 
 import UIKit
 
 class PEFactsViewController: UITableViewController {
     
+    // MARK:- Variable Initialization
+    
     var pullToRefresh = UIRefreshControl()
     var factsArray: [FactRows] = []
-
-
-     var viewModel: PEViewModel = {
+    var viewModel: PEViewModel = {
         let viewmod = PEViewModel()
         return viewmod
     }()
@@ -31,13 +30,13 @@ class PEFactsViewController: UITableViewController {
     }
     
     //MARK:- private Methods
-
+    
     private func getFactsData(){
         viewModel.getFactData { (isSuccess) in
             if isSuccess{
                 self.factsArray = self.viewModel.factDetails!
                 DispatchQueue.main.async {
-
+                    
                     if self.factsArray.count>0{
                         self.tableView.reloadData()
                     }
@@ -51,7 +50,7 @@ class PEFactsViewController: UITableViewController {
         self.pullToRefresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.pullToRefresh.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         self.view.addSubview(self.pullToRefresh)
-
+        
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl){
@@ -60,7 +59,7 @@ class PEFactsViewController: UITableViewController {
     }
     
     //MARK:- UITableview Datasource Methods
-
+    
     override   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.factsArray.count
@@ -77,7 +76,7 @@ class PEFactsViewController: UITableViewController {
     }
     
     //MARK:- UITableview delegate Methods
-
+    
     override   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

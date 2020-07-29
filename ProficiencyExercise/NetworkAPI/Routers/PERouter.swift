@@ -2,8 +2,7 @@
 //  PERouter.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 29/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith on 29/07/20.
 //
 
 import Foundation
@@ -16,10 +15,10 @@ enum PERouter: Router {
     var method: HTTPMethod{
         switch self {
         case .getFactsData:
-          return  .get
+            return  .get
         }
     }
-   
+    
     var headers: HTTPHeaders?{
         return ["Content-Type":"application/json"]
     }
@@ -27,6 +26,6 @@ enum PERouter: Router {
     var bodyParams: Any?{
         return nil
     }
-  
-
+    
+    
 }

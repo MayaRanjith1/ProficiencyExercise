@@ -2,13 +2,13 @@
 //  PEFactsCell.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 29/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith on 29/07/20.
 //
 
 import UIKit
 
 class PEFactsCell: UITableViewCell {
+    
     lazy var width: NSLayoutConstraint = {
         let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
         width.isActive = true
@@ -19,7 +19,6 @@ class PEFactsCell: UITableViewCell {
         let factTitleLabel = UILabel()
         factTitleLabel.backgroundColor = .white
         factTitleLabel.textColor = .black
-
         factTitleLabel.numberOfLines = 0
         factTitleLabel.textAlignment = NSTextAlignment.center
         factTitleLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
@@ -33,7 +32,6 @@ class PEFactsCell: UITableViewCell {
         factDescLabel.textColor = .black
         factDescLabel.numberOfLines = 0
         factDescLabel.textAlignment = NSTextAlignment.center
-
         factDescLabel.translatesAutoresizingMaskIntoConstraints = false
         return factDescLabel
     }()
@@ -45,7 +43,13 @@ class PEFactsCell: UITableViewCell {
         return factImageView
     }()
     
+    //MARK:- Lifecycle methods
     
+    override func awakeFromNib() {
+           super.awakeFromNib()
+           // Initialization code
+           self.backgroundColor = .white
+       }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = UIColor.white
@@ -56,6 +60,9 @@ class PEFactsCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK:- Private methods
+
     fileprivate func setupViews() {
         contentView.addSubview(factTitleLabel)
         factTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -79,7 +86,7 @@ class PEFactsCell: UITableViewCell {
         
     }
     
-    func setupCellWithValues(model:FactRows){
+     func setupCellWithValues(model:FactRows){
         factTitleLabel.text = model.title
         factDescLabel.text = model.description
         LazyImageLoad.setImageOnImageViewFromUrl(imageView: factImageView,url:model.imageName){(image) in
@@ -92,17 +99,6 @@ class PEFactsCell: UITableViewCell {
         }
         
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        self.backgroundColor = .white
-    }
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
+   
     
 }

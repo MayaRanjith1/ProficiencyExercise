@@ -2,8 +2,7 @@
 //  ErrorDataModel.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 29/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith on 29/07/20.
 //
 
 import Foundation
@@ -15,8 +14,8 @@ struct  ErrordataModel {
 extension ErrordataModel: Decodable {
     
     private enum ErrordataModelCodingKeys: String,CodingKey{
-           case fieldErrors = "fieldErrors"
-       }
+        case fieldErrors = "fieldErrors"
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ErrordataModelCodingKeys.self)

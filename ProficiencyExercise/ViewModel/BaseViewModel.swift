@@ -9,7 +9,6 @@ import Foundation
 
 class BaseViewModel {
     // server error
-    
     var serverErrorMessage: String{
         return BaseManager.errorDataModel?.fieldErrors?[0].message ?? ""
     }

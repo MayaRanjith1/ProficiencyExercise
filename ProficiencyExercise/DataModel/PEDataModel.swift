@@ -2,8 +2,7 @@
 //  PEDataModel.swift
 //  ProficiencyExercise
 //
-//  Created by Ranjith Karuvadiyil on 29/07/20.
-//  Copyright © 2020 Mistybits Pvt Ltd. All rights reserved.
+//  Created by Maya Ranjith on 29/07/20.
 //
 
 import Foundation
@@ -16,7 +15,7 @@ struct PEDataModel: Codable {
         case title = "title"
         case factRows = "rows"
     }
-
+    
 }
 
 struct FactRows:Codable {
@@ -43,10 +42,10 @@ extension PEDataModel{
 
 extension FactRows{
     init(from decoder:Decoder) throws{
-           let rowsInfo =  try decoder.container(keyedBy: FactRowsCodingKeys.self)
-           title =  try rowsInfo.decodeIfPresent(String.self, forKey: .title) ?? ""
+        let rowsInfo =  try decoder.container(keyedBy: FactRowsCodingKeys.self)
+        title =  try rowsInfo.decodeIfPresent(String.self, forKey: .title) ?? ""
         description =  try rowsInfo.decodeIfPresent(String.self, forKey: .description) ?? ""
-
+        
         imageName =  try rowsInfo.decodeIfPresent(String.self, forKey: .imageName) ?? ""
-       }
+    }
 }
