@@ -46,10 +46,10 @@ class PEFactsCell: UITableViewCell {
     //MARK:- Lifecycle methods
     
     override func awakeFromNib() {
-           super.awakeFromNib()
-           // Initialization code
-           self.backgroundColor = .white
-       }
+        super.awakeFromNib()
+        // Initialization code
+        self.backgroundColor = .white
+    }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = UIColor.white
@@ -62,7 +62,7 @@ class PEFactsCell: UITableViewCell {
     }
     
     //MARK:- Private methods
-
+    
     fileprivate func setupViews() {
         contentView.addSubview(factTitleLabel)
         factTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -86,19 +86,16 @@ class PEFactsCell: UITableViewCell {
         
     }
     
-     func setupCellWithValues(model:FactRows){
+    func setupCellWithValues(model:FactRows){
         factTitleLabel.text = model.title
         factDescLabel.text = model.description
         LazyImageLoad.setImageOnImageViewFromUrl(imageView: factImageView,url:model.imageName){(image) in
             if image == nil {
                 DispatchQueue.main.async {
                     self.factImageView.image = UIImage(named: "no-image-icon")
-                    
                 }
             }
         }
         
     }
-   
-    
 }
