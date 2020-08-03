@@ -30,6 +30,7 @@
 		215A474224D1B04000B82351 /* PEFactsCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A474124D1B04000B82351 /* PEFactsCellTest.swift */; };
 		215A474424D1B3C400B82351 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A474324D1B3C400B82351 /* MockURLProtocol.swift */; };
 		215A474624D1B81500B82351 /* PEViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A474524D1B81500B82351 /* PEViewModelTest.swift */; };
+		21F55F8324D87952006AE4C0 /* LoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F55F8224D87952006AE4C0 /* LoadingSpinner.swift */; };
 		A4ABFC706DDCBEA6FE0F6590 /* Pods_ProficiencyExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32057A2EE692F7CDCCBC985 /* Pods_ProficiencyExerciseTests.framework */; };
 		CDAA750D8FD33BF5B7140487 /* Pods_ProficiencyExercise_ProficiencyExerciseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468885605B2FB6BDF7792E93 /* Pods_ProficiencyExercise_ProficiencyExerciseUITests.framework */; };
 		F0165F9EB5DB267C650088D2 /* Pods_ProficiencyExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91219899949CEB3E03EF7C0B /* Pods_ProficiencyExercise.framework */; };
@@ -82,6 +83,7 @@
 		215A474124D1B04000B82351 /* PEFactsCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEFactsCellTest.swift; sourceTree = "<group>"; };
 		215A474324D1B3C400B82351 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		215A474524D1B81500B82351 /* PEViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEViewModelTest.swift; sourceTree = "<group>"; };
+		21F55F8224D87952006AE4C0 /* LoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinner.swift; sourceTree = "<group>"; };
 		2D8D7FFF22900988EFBA016B /* Pods-ProficiencyExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProficiencyExercise.release.xcconfig"; path = "Target Support Files/Pods-ProficiencyExercise/Pods-ProficiencyExercise.release.xcconfig"; sourceTree = "<group>"; };
 		41DCCD95A9E6F2ECA6530F64 /* Pods-ProficiencyExercise-ProficiencyExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProficiencyExercise-ProficiencyExerciseUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProficiencyExercise-ProficiencyExerciseUITests/Pods-ProficiencyExercise-ProficiencyExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		468885605B2FB6BDF7792E93 /* Pods_ProficiencyExercise_ProficiencyExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProficiencyExercise_ProficiencyExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				215A473D24D1732500B82351 /* LazyImageLoad.swift */,
+				21F55F8224D87952006AE4C0 /* LoadingSpinner.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				215A471E24D097D000B82351 /* PEFactsViewController.swift in Sources */,
 				215A472324D139F100B82351 /* PEFactsCell.swift in Sources */,
 				215A473324D143E600B82351 /* Router.swift in Sources */,
+				21F55F8324D87952006AE4C0 /* LoadingSpinner.swift in Sources */,
 				215A473B24D1555B00B82351 /* BaseViewModel.swift in Sources */,
 				215A472624D13AA700B82351 /* PEConstants.swift in Sources */,
 				215A472124D098F100B82351 /* PEViewModel.swift in Sources */,

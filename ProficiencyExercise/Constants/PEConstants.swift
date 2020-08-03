@@ -28,3 +28,8 @@ struct URLValue {
     static let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     
 }
+
+struct NetworkError {
+    static let noInternet = "No internet connectivity.Please checj mobile/Wifi settings"
+    static let noDatafound = "No Data Found"
+}

@@ -7,42 +7,37 @@
 
 import Foundation
 
+protocol PEViewModelDelegate:class {
+    func showNetworkError()
+    func fetchedFacts()
+    func showRequestError(_ error: String)
+}
 class PEViewModel: BaseManager {
     
     private var factDataModel: PEDataModel?
     var factDetails: [FactRows]?
+    weak var delegate: PEViewModelDelegate?
 }
 
 extension PEViewModel{
-    func getFactData(completion: @escaping (Bool) -> ()){
-        PEFactmanger.getFactDetails { (data,error) in
-            if error == nil{
-                do{
-                    let decoder = JSONDecoder()
-                    guard let responseData = data else{
-                        DispatchQueue.main.async {
-                            completion(false)
-                        }
-                        return
-                    }
-                    self.factDataModel = try decoder.decode(PEDataModel.self, from: responseData)
-                    
-                    self.factDetails = self.factDataModel?.factRows
-                    DispatchQueue.main.async {
-                        completion (true)
-                    }
-                }
-                catch {
-                    DispatchQueue.main.async {
-                        completion(false)
-                    }
-                }
-                
+    
+    func fetchFactData(){
+        if(!BaseManager.isReachable()){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.delegate?.showNetworkError()
+            }
+            return
+        }
+        PEFactmanger.getFactDetails { (response:PEDataModel?,error) in
+            if error != nil{
+                self.delegate?.showRequestError(error?.localizedDescription ?? "")
             }else{
-                completion(false)
-                
+                self.factDetails = []
+                self.factDetails?.append(contentsOf: (response?.factRows ?? []))
+                self.delegate?.fetchedFacts()
             }
         }
         
     }
+    
 }

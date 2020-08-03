@@ -39,9 +39,7 @@ class PEViewModelTest: XCTestCase {
         MockURLProtocol.resposnseWithSuccess(data: responseJson.data(using: .utf8)!)
         let expectataion = self.expectation(description: "Wait for service call")
         let expectTime :Double = 3
-        viewmodelMock.getFactData{(isfetched)in
-            
-        }
+        viewmodelMock.fetchFactData()
         DispatchQueue.main.asyncAfter(deadline: .now() + expectTime){
             expectataion.fulfill()
         }

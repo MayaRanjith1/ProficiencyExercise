@@ -25,25 +25,20 @@ class PEFactsViewController: UITableViewController {
         // Do any additional setup after loading the view.
         self.tableView.register(PEFactsCell.self, forCellReuseIdentifier:CellIdentifiers.factCell)
         self.tableView.backgroundColor = .white
-        getFactsData()
+        viewModel.delegate = self
         pullToRefreshCall()
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getFactsData()
+    }
     //MARK:- private Methods
     
     private func getFactsData(){
-        viewModel.getFactData { (isSuccess) in
-            if isSuccess{
-                self.factsArray = self.viewModel.factDetails!
-                DispatchQueue.main.async {
-                    
-                    if self.factsArray.count>0{
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            }
-        }
+        LoadingSpinner.show()
+        viewModel.fetchFactData()
     }
     
     func pullToRefreshCall(){
@@ -58,18 +53,26 @@ class PEFactsViewController: UITableViewController {
         refreshControl.endRefreshing()
     }
     
+    private func showAlert(title:String,message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    
+    
     //MARK:- UITableview Datasource Methods
     
     override   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.factsArray.count
+        return viewModel.factDetails?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:PEFactsCell = (tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.factCell, for: indexPath) as? PEFactsCell)!
         
-        if self.factsArray.count>0{
-            cell.setupCellWithValues(model: self.factsArray[indexPath.row])
+        if viewModel.factDetails?.count ?? 0 > 0{
+            cell.setupCellWithValues(model: (viewModel.factDetails?[indexPath.row])!)
         }
         
         return cell
@@ -81,6 +84,25 @@ class PEFactsViewController: UITableViewController {
         return UITableView.automaticDimension
     }
     
+    
+}
+extension PEFactsViewController: PEViewModelDelegate{
+    func showNetworkError() {
+        showAlert(title: "", message: NetworkError.noInternet)
+    }
+    
+    func fetchedFacts() {
+        DispatchQueue.main.async {
+            LoadingSpinner.hide()
+
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    func showRequestError(_ error: String) {
+        showAlert(title: "", message: NetworkError.noDatafound)
+    }
     
 }
 

@@ -76,6 +76,9 @@ class BaseManager {
         }
         return type
     }
+    static func isReachable()-> Bool{
+        return NetworkReachabilityManager()!.isReachable
+    }
 
     class func requestForServiceWith(endPoint: String, completion: @escaping(_ response: Data?, _ error:Error?) -> ()){
         

@@ -10,11 +10,22 @@ import Alamofire
 
 class PEFactmanger: BaseManager {
     
-    class func getFactDetails(completion: @escaping (_ response : Data?, _ error : Error?) ->()){
+    class func getFactDetails(completion: @escaping ( PEDataModel? , _ error : Error?) ->()){
         let endpoint = PERouter.baseUrl
         BaseManager.requestForServiceWith(endPoint: endpoint) {
             (responseData,responseError) in
-            completion(responseData,responseError)
+            
+            if responseData != nil{
+                do{
+                    let object =    try JSONDecoder().decode(PEDataModel.self, from: responseData!)
+                    completion(object , nil)
+                    
+                }catch{
+                    completion(nil , error)
+                }
+            }else{
+                completion(nil , nil)
+            }
         }
     }
     
